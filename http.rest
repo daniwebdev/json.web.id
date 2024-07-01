@@ -1,1 +1,98 @@
-GET http://localhost:6022/app
+GET http://localhost:6022/app?limit=2&page=1
+
+###
+
+POST http://localhost:6022/app HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "value 4"
+}
+
+###
+
+PUT http://localhost:6022/app/ce71181f-41d7-45c9-8b9f-c940f60ff232 HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "asdf updated"
+}
+
+
+###
+
+DELETE http://localhost:6022/app/9da1d781-c9fc-4658-9459-0b896dfc000d HTTP/1.1
+
+###
+###
+###
+
+# With apiKey
+
+GET http://localhost:6022/app?limit=2&page=1
+x-api-key: a0s9dufasodfi
+
+###
+
+POST http://localhost:6022/app HTTP/1.1
+Content-Type: application/json
+x-api-key: a0s9dufasodfi
+
+{
+    "key": "value 4"
+}
+
+###
+
+PUT http://localhost:6022/app/6ae4b4d1-1fd4-405f-b77a-9ca441483a75 HTTP/1.1
+Content-Type: application/json
+x-api-key: a0s9dufasodfi
+
+{
+    "key": "asdf updated"
+}
+
+
+###
+
+DELETE http://localhost:6022/app/6ae4b4d1-1fd4-405f-b77a-9ca441483a75 HTTP/1.1
+x-api-key: a0s9dufasodfi
+
+###
+###
+###
+
+# With apiKey + Namespace
+
+GET http://localhost:6022/app/m/todo?limit=2&page=1
+x-api-key: a0s9dufasodfi
+
+###
+
+POST http://localhost:6022/app/m/todo HTTP/1.1
+Content-Type: application/json
+x-api-key: a0s9dufasodfi
+
+{
+    "key": "value 4"
+}
+
+###
+
+PUT http://localhost:6022/app/m/todo/6ae4b4d1-1fd4-405f-b77a-9ca441483a75 HTTP/1.1
+Content-Type: application/json
+x-api-key: a0s9dufasodfi
+
+{
+    "key": "asdf updated"
+}
+
+
+###
+
+DELETE http://localhost:6022/app/m/todo/6ae4b4d1-1fd4-405f-b77a-9ca441483a75 HTTP/1.1
+x-api-key: a0s9dufasodfi
+
+###
+###
+###

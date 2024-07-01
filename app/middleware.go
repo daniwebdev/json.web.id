@@ -13,7 +13,7 @@ func AppMiddleware(app *fiber.App) *fiber.App {
 	
 
     app.Use(func(c *fiber.Ctx) error {
-        apiKey := c.Get("apiKey")
+        apiKey := c.Get("X-Api-Key")
         namespace := c.Params("namespace")
 
         db, err := helpers.InitDB(apiKey, namespace)
