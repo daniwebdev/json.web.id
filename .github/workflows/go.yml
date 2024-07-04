@@ -22,5 +22,5 @@ jobs:
     - run: ls
     
     - name: Build
-      run: go build main.go -o json-web-id
+      run: go build -o json_web_id main.go
 
