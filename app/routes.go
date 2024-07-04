@@ -11,14 +11,14 @@ func RouteInit(app *fiber.App) {
 	})
 
 
-	app.Get("/app", getAllRecords)
-    app.Post("/app", insertRecord)
-    app.Put("/app/:id", updateRecord)
-    app.Delete("/app/:id", deleteRecord)
+	app.Get("/api", getAllRecords)
+    app.Post("/api", insertRecord)
+    app.Put("/api/:id", updateRecord)
+    app.Delete("/api/:id", deleteRecord)
 
-    app.Get("/app/m/:namespace", getAllRecords)
-    app.Post("/app/m/:namespace", insertRecord)
-    app.Put("/app/m/:namespace/:id", updateRecord)
-    app.Delete("/app/m/:namespace/:id", deleteRecord)
+    app.Get("/api/app/:namespace", getAllRecords)
+    app.Post("/api/app/:namespace", insertRecord)
+    app.Put("/api/app/:namespace/:id", updateRecord)
+    app.Delete("/api/app/:namespace/:id", deleteRecord)
 
 }
