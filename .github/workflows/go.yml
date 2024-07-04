@@ -18,7 +18,9 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.20'
-
+    
+    - run: ls
+    
     - name: Build
-      run: go build -v main.go -o json-web-id
+      run: go build main.go -o json-web-id
 
