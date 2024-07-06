@@ -10,15 +10,14 @@ func RouteInit(app *fiber.App) {
 		return c.SendString("Ok!")
 	})
 
+	app.Get("/api", AppMiddleware, getAllRecords)
+    app.Post("/api", AppMiddleware, insertRecord)
+    app.Put("/api/:id", AppMiddleware, updateRecord)
+    app.Delete("/api/:id", AppMiddleware, deleteRecord)
 
-	app.Get("/api", getAllRecords)
-    app.Post("/api", insertRecord)
-    app.Put("/api/:id", updateRecord)
-    app.Delete("/api/:id", deleteRecord)
-
-    app.Get("/api/app/:resource", getAllRecords)
-    app.Post("/api/app/:resource", insertRecord)
-    app.Put("/api/app/:resource/:id", updateRecord)
-    app.Delete("/api/app/:resource/:id", deleteRecord)
+    app.Get("/api/app/:resourceName", AppMiddleware, getAllRecords)
+    app.Post("/api/app/:resourceName", AppMiddleware, insertRecord)
+    app.Put("/api/app/:resourceName/:id", AppMiddleware, updateRecord)
+    app.Delete("/api/app/:resourceName/:id", AppMiddleware, deleteRecord)
 
 }

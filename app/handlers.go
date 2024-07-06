@@ -12,7 +12,7 @@ import (
 
 func getAllRecords(c *fiber.Ctx) error {
     db := c.Locals("db").(*sql.DB)
-
+    
     query := c.Query("query")
     page, _ := strconv.Atoi(c.Query("page", "1"))
     limit, _ := strconv.Atoi(c.Query("limit", "10"))

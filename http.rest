@@ -37,7 +37,7 @@ DELETE http://{{host}}/api/9da1d781-c9fc-4658-9459-0b896dfc000d HTTP/1.1
 //----------- With apiKey -----------
 //-----------------------------------
 
-GET http://{{host}}/api?limit=2&page=1
+GET http://{{host}}/api?limit=10&page=1&query=
 x-api-key: {{apiKey}}
 
 ###
@@ -47,7 +47,7 @@ Content-Type: application/json
 x-api-key: {{apiKey}}
 
 {
-    "key": "value 4"
+    "key": "value 5"
 }
 
 ###
@@ -76,7 +76,7 @@ x-api-key: {{apiKey}}
 
 @resource = todo
 
-GET http://{{host}}/api/app/{{resource}}?limit=2&page=1
+GET http://{{host}}/api/app/{{resource}}/?limit=10&page=1
 x-api-key: {{apiKey}}
 
 ###
@@ -86,7 +86,7 @@ Content-Type: application/json
 x-api-key: {{apiKey}}
 
 {
-    "key": "value 4"
+    "key": "value 22"
 }
 
 ###

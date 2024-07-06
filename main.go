@@ -6,6 +6,7 @@ import (
 	"github.com/daniwebdev/api-json-web-id/app"
 	"github.com/daniwebdev/api-json-web-id/config"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -20,9 +21,10 @@ func main() {
 
 	server := fiber.New()
 
-	server = app.AppMiddleware(server)
+	server.Use(cors.New())
 
 	app.RouteInit(server)
+
 
 	server.Listen(":" + appConfig.Port)
 
