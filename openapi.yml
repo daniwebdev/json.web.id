@@ -1,0 +1,226 @@
+openapi: 3.0.0
+info:
+  title: GoFiber API with SQLite
+  version: 1.0.0
+  description: A simple RESTful API built with GoFiber and SQLite supporting CRUD operations with dynamic data and API key for database selection.
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api:
+    get:
+      summary: Get all records
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponse'
+    post:
+      summary: Create a new record
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Record'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  /api/{id}:
+    put:
+      summary: Update a record
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Record'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+    delete:
+      summary: Delete a record
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  /api/app/{resourceName}:
+    get:
+      summary: Get all records for a specific resource
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/ResourceName'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponse'
+    post:
+      summary: Create a new record for a specific resource
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/ResourceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Record'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  /api/app/{resourceName}/{id}:
+    put:
+      summary: Update a record for a specific resource
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/ResourceName'
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Record'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+    delete:
+      summary: Delete a record for a specific resource
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyHeader'
+        - $ref: '#/components/parameters/ResourceName'
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+components:
+  parameters:
+    ApiKeyHeader:
+      name: apiKey
+      in: header
+      schema:
+        type: string
+      required: false
+    ResourceName:
+      name: resourceName
+      in: path
+      required: true
+      schema:
+        type: string
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+    Query:
+      name: q
+      in: query
+      schema:
+        type: string
+
+  schemas:
+    Record:
+      type: object
+      additionalProperties: true
+
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/Record'
+
+    PaginatedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            page:
+              type: integer
+            limit:
+              type: integer
+            query:
+              type: string
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/Record'
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Something went wrong
+        data:
+          type: null

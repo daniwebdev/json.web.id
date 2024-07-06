@@ -14,9 +14,9 @@ func AppMiddleware(app *fiber.App) *fiber.App {
 
     app.Use(func(c *fiber.Ctx) error {
         apiKey := c.Get("X-Api-Key")
-        namespace := c.Params("namespace")
+        resource := c.Params("resource")
 
-        db, err := helpers.InitDB(apiKey, namespace)
+        db, err := helpers.InitDB(apiKey, resource)
         if err != nil {
             return c.Status(500).SendString(err.Error())
         }

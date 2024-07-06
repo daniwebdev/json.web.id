@@ -1,36 +1,32 @@
 # GoFiber API with SQLite
 
-This project is a simple RESTful API built with GoFiber and SQLite. It supports CRUD operations with dynamic data and uses an API key for database selection.
+A simple yet powerful RESTful API built with GoFiber and SQLite, supporting CRUD operations and dynamic database selection.
 
 ## Features
 
-- **CRUD Operations**: Create, Read, Update, Delete records.
-- **Dynamic Database Selection**: Database file selected based on API key and namespace.
-- **Pagination and Search**: Supports pagination and search for fetching records.
+- CRUD operations (Create, Read, Update, Delete)
+- Dynamic database selection based on API key
+- Pagination and search functionality
 
-## Endpoints
+## API Endpoints
 
-### Headers
+All endpoints require an `apiKey` header (optional).
 
-- `apiKey` (optional)
+### Generic Endpoints
 
-### Without Namespace
+- `GET /api`: Retrieve all records
+- `POST /api`: Create a new record
+- `PUT /api/:id`: Update a record
+- `DELETE /api/:id`: Delete a record
 
-- `[GET] /app`: Get all records.
-- `[POST] /app`: Insert a record to the database.
-- `[PUT] /app/:id`: Update a record by `id`.
-- `[DELETE] /app/:id`: Delete a record by `id`.
+### Resource-specific Endpoints
 
-### With Namespace
+- `GET /api/app/:resourceName`: Retrieve all records for a specific resource
+- `POST /api/app/:resourceName`: Create a new record for a specific resource
+- `PUT /api/app/:resourceName/:id`: Update a record for a specific resource
+- `DELETE /api/app/:resourceName/:id`: Delete a record for a specific resource
 
-- `[GET] /app/m/:namespace`: Get all records.
-- `[POST] /app/m/:namespace`: Insert a record to the database.
-- `[PUT] /app/m/:namespace/:id`: Update a record by `id`.
-- `[DELETE] /app/m/:namespace/:id`: Delete a record by `id`.
-
-### Request Payload
-
-For `[POST] /app` and `[POST] /app/m/:namespace`:
+### Request Format (POST and PUT)
 
 ```json
 {
@@ -39,9 +35,9 @@ For `[POST] /app` and `[POST] /app/m/:namespace`:
 }
 ```
 
-### Response Format
+### Response Formats
 
-#### Success Response (200)
+#### Success (200 OK)
 
 ```json
 {
@@ -56,7 +52,7 @@ For `[POST] /app` and `[POST] /app/m/:namespace`:
 }
 ```
 
-#### Error Response (500)
+#### Error (500 Internal Server Error)
 
 ```json
 {
@@ -65,16 +61,16 @@ For `[POST] /app` and `[POST] /app/m/:namespace`:
 }
 ```
 
-#### List of Records with Pagination and Search
+#### Paginated Results
 
 ```json
 {
     "message": "success",
     "data": {
-        "total": 1,
+        "total": 100,
         "page": 1,
         "limit": 10,
-        "query": "query search",
+        "query": "search term",
         "records": [
             {
                 "id": "1234567890",
@@ -82,41 +78,39 @@ For `[POST] /app` and `[POST] /app/m/:namespace`:
                 "key2": "value2",
                 "created_at": 1234567890,
                 "updated_at": 1234567890
-            }
+            },
+            // ... more records
         ]
     }
 }
 ```
 
-## Setup
+## Setup and Installation
 
 ### Prerequisites
 
-- [Go](https://golang.org/dl/) (version 1.16 or higher)
-- [SQLite](https://www.sqlite.org/download.html)
+- Go (version 1.16 or higher)
+- SQLite
 
-### Installation
+### Steps
 
 1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/your-username/gofiber-api-sqlite.git
-    cd gofiber-api-sqlite
-    ```
+   ```
+   git clone https://github.com/your-username/gofiber-api-sqlite.git
+   cd gofiber-api-sqlite
+   ```
 
 2. Install dependencies:
-
-    ```bash
-    go mod tidy
-    ```
+   ```
+   go mod tidy
+   ```
 
 3. Run the application:
+   ```
+   go run main.go
+   ```
 
-    ```bash
-    go run main.go
-    ```
-
-4. The API will be available at `http://localhost:3000`.
+The API will be available at `http://localhost:3000`.
 
 ## Project Structure
 
@@ -140,45 +134,33 @@ For `[POST] /app` and `[POST] /app/m/:namespace`:
 ├── helpers
 │   └── db.go
 ├── http.rest
-├── main.go
+└── main.go
 ```
 
-### `main.go`
+## Usage Examples
 
-This is the main entry point of the application. It sets up the routes and middleware.
-
-### `helpers/database.go`
-
-This file contains helper functions for initializing and managing the SQLite databases.
-
-### `db`
-
-This directory contains the SQLite database files. A default `general.db` is used if no API key or namespace is provided.
-
-## Usage
-
-### Insert a Record
-
+### Create a Record
 ```bash
-curl -X POST http://localhost:3000/app -H "Content-Type: application/json" -d '{"key":"value", "key2":"value2"}'
+curl -X POST http://localhost:3000/api \
+     -H "Content-Type: application/json" \
+     -d '{"key":"value", "key2":"value2"}'
 ```
 
-### Get All Records
-
+### Retrieve All Records
 ```bash
-curl http://localhost:3000/app
+curl http://localhost:3000/api
 ```
 
 ### Update a Record
-
 ```bash
-curl -X PUT http://localhost:3000/app/1234567890 -H "Content-Type: application/json" -d '{"key":"new_value"}'
+curl -X PUT http://localhost:3000/api/1234567890 \
+     -H "Content-Type: application/json" \
+     -d '{"key":"new_value"}'
 ```
 
 ### Delete a Record
-
 ```bash
-curl -X DELETE http://localhost:3000/app/1234567890
+curl -X DELETE http://localhost:3000/api/1234567890
 ```
 
 ## License

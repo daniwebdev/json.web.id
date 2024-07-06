@@ -16,9 +16,9 @@ func RouteInit(app *fiber.App) {
     app.Put("/api/:id", updateRecord)
     app.Delete("/api/:id", deleteRecord)
 
-    app.Get("/api/app/:namespace", getAllRecords)
-    app.Post("/api/app/:namespace", insertRecord)
-    app.Put("/api/app/:namespace/:id", updateRecord)
-    app.Delete("/api/app/:namespace/:id", deleteRecord)
+    app.Get("/api/app/:resource", getAllRecords)
+    app.Post("/api/app/:resource", insertRecord)
+    app.Put("/api/app/:resource/:id", updateRecord)
+    app.Delete("/api/app/:resource/:id", deleteRecord)
 
 }
