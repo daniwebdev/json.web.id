@@ -5,7 +5,7 @@ info:
   description: A simple RESTful API built with GoFiber and SQLite supporting CRUD operations with dynamic data and API key for database selection.
 
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:6022
 
 paths:
   /api:
