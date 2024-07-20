@@ -1,0 +1,10 @@
+name: json-web-id
+services:
+  api:
+    container_name: json-web-id-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/daniwebdev/json-server
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
