@@ -36,3 +36,11 @@ jobs:
         port: 22
         source: "json_web_id"
         target: /home/dani/app/
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PASSWORD }}
+        port: 22
+        script: sudo systemctl restart json_web_id
