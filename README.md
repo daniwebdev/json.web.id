@@ -14,17 +14,17 @@ All endpoints require an `apiKey` header (optional).
 
 ### Generic Endpoints
 
-- `GET /api`: Retrieve all records
-- `POST /api`: Create a new record
-- `PUT /api/:id`: Update a record
-- `DELETE /api/:id`: Delete a record
+- `GET /`: Retrieve all records
+- `POST /`: Create a new record
+- `PUT /:id`: Update a record
+- `DELETE /:id`: Delete a record
 
 ### Resource-specific Endpoints
 
-- `GET /api/app/:resourceName`: Retrieve all records for a specific resource
-- `POST /api/app/:resourceName`: Create a new record for a specific resource
-- `PUT /api/app/:resourceName/:id`: Update a record for a specific resource
-- `DELETE /api/app/:resourceName/:id`: Delete a record for a specific resource
+- `GET /app/:resourceName`: Retrieve all records for a specific resource
+- `POST /app/:resourceName`: Create a new record for a specific resource
+- `PUT /app/:resourceName/:id`: Update a record for a specific resource
+- `DELETE /app/:resourceName/:id`: Delete a record for a specific resource
 
 ### Request Format (POST and PUT)
 
