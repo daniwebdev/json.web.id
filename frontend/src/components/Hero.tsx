@@ -5,8 +5,8 @@ const Circle: React.FC<{ className?: string }> = ({ className }) => {
             <circle cx="338" cy="338" r="338" fill="url(#paint0_radial_62_3)" />
             <defs>
                 <radialGradient id="paint0_radial_62_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(338 338) rotate(90) scale(338)">
-                    <stop stop-color="#475ED0" stop-opacity="0.35" />
-                    <stop offset="1" stop-color="#3300FF" stop-opacity="0" />
+                    <stop stopColor="#475ED0" stopOpacity="0.35" />
+                    <stop offset="1" stopColor="#3300FF" stopOpacity="0" />
                 </radialGradient>
             </defs>
         </svg>
@@ -31,8 +31,8 @@ export default function Hero() {
                 </div>
             </div>
 
-            <Circle className="z-10 absolute top-0 left-0 w-1/2"></Circle>
-            <Circle className="z-10 absolute bottom-0 right-0 w-1/3"></Circle>
+            <Circle className="z-10 absolute top-0 left-0 w-1/2 opacity-40"></Circle>
+            <Circle className="z-10 absolute bottom-0 right-0 w-1/3 opacity-40"></Circle>
         </section>
     );
 }
