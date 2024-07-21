@@ -191,7 +191,7 @@ components:
         type: integer
         default: 10
     Query:
-      name: q
+      name: query
       in: query
       schema:
         type: string
