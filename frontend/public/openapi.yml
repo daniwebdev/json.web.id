@@ -10,6 +10,8 @@ servers:
 paths:
   /:
     get:
+      tags:
+        - Generic
       summary: Get all records
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -24,6 +26,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedResponse'
     post:
+      tags:
+        - Generic
       summary: Create a new record
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -43,6 +47,8 @@ paths:
 
   /{id}:
     put:
+      tags:
+        - Generic
       summary: Update a record
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -61,6 +67,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
     delete:
+      tags:
+        - Generic
       summary: Delete a record
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -75,6 +83,8 @@ paths:
 
   /app/{resourceName}:
     get:
+      tags:
+        - App
       summary: Get all records for a specific resource
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -90,6 +100,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedResponse'
     post:
+      tags:
+        - App
       summary: Create a new record for a specific resource
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -110,6 +122,8 @@ paths:
 
   /app/{resourceName}/{id}:
     put:
+      tags:
+        - App
       summary: Update a record for a specific resource
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -129,6 +143,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
     delete:
+      tags:
+        - App
       summary: Delete a record for a specific resource
       parameters:
         - $ref: '#/components/parameters/ApiKeyHeader'
@@ -184,6 +200,9 @@ components:
     Record:
       type: object
       additionalProperties: true
+      example:
+        key: value
+        key2: value2
 
     SuccessResponse:
       type: object
