@@ -7,8 +7,7 @@ export default function Home() {
   return (
     <>
       <Header></Header>
-      <Hero></Hero>
-
+      {/* <Hero></Hero> */}
       <Playground></Playground>
     </>
   );

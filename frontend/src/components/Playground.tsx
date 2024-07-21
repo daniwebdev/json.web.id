@@ -7,7 +7,7 @@ import "./swagger.css"
 export function Playground() {
     return (
         <section className="max-w-screen-xl mx-auto">
-            <SwaggerUI url="/openapi.yml" />
+            <SwaggerUI url="/openapi.yml" persistAuthorization={true} />
         </section>
     );
 }
