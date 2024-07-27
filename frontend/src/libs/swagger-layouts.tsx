@@ -1,16 +1,6 @@
 import React from "react";
-import SwaggerUI from "swagger-ui-react";
-import PropTypes from "prop-types";
 
-class OperationsLayout extends React.Component {
-  static propTypes = {
-    errSelectors: PropTypes.object.isRequired,
-    errActions: PropTypes.object.isRequired,
-    specSelectors: PropTypes.object.isRequired,
-    oas3Selectors: PropTypes.object.isRequired,
-    oas3Actions: PropTypes.object.isRequired,
-    getComponent: PropTypes.func.isRequired,
-  };
+class OperationsLayout extends React.Component<{getComponent: any}, {}>  {
 
   render() {
     const { getComponent } = this.props;
