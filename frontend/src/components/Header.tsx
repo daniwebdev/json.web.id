@@ -11,7 +11,7 @@ export default function Header() {
                     <h1 className="text-2xl font-bold">JSON.WEB.ID</h1>
                 </div>
                 <div>
-                    <a href="https://github.com/daniwebdev/json.web.id" className="inline-flex items-center text-white">
+                    <a href="https://github.com/daniwebdev/json.web.id" target="_blank" className="inline-flex items-center text-white">
                         <Image src="/github-logo-white.svg" alt="github logo" width={20} height={20}></Image>
                     </a>
                 </div>
