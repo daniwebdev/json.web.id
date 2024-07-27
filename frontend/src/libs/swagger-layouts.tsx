@@ -1,22 +1,39 @@
+'use client'
+
 import React from "react";
 
-class OperationsLayout extends React.Component<{getComponent: any}, {}>  {
+interface PropsTypes {
+  getComponent: Function,
+};
 
-  render() {
-    const { getComponent } = this.props;
+// class OperationsLayout extends React.Component<PropsTypes, {}>  {
 
-    const Operations = getComponent("operations", true);
+//   render() {
+//     const { getComponent } = this.props;
 
-    return (
-      <div className="swagger-ui">
-        <Operations />
-      </div>
-    );
-  }
+//     const Operations = getComponent("operations", true);
+
+//     return (
+//       <div className="swagger-ui">
+//         <Operations />
+//       </div>
+//     );
+//   }
+// }
+
+function OperationsLayout({getComponent}: PropsTypes) {
+
+  const Operations = getComponent("operations", true);
+
+  return (
+    <div className="swagger-ui">
+      <Operations />
+    </div>
+  );
 }
 
 // Create the plugin that provides our layout component
-const OperationsLayoutPlugin = () => {
+export const OperationsLayoutPlugin = () => {
   return {
     components: {
       OperationsLayout: OperationsLayout,

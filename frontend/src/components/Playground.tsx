@@ -1,10 +1,9 @@
-'use client';
+'use client'
 
 import SwaggerUI from "swagger-ui-react"
-
+import { OperationsLayoutPlugin } from "@/libs/swagger-layouts";
 import "swagger-ui-react/swagger-ui.css"
 import "./swagger.css"
-import React from "react";
 
 export function Playground() {
     return (
