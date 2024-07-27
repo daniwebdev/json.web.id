@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy go mod and sum files
 COPY go.mod go.sum ./
 
+# install gcc
+RUN apk add --no-cache build-base
+
 # Download all dependencies
 RUN go mod download
 
@@ -14,7 +17,7 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+RUN CGO_ENABLED=1 GOOS=linux go build -a -installsuffix cgo -o main .
 
 # Use a smaller base image for the final stage
 FROM alpine:latest  
