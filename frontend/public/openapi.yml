@@ -7,6 +7,11 @@ info:
 servers:
   - url: https://api.json.web.id
 
+tags:
+  - name: Generic
+    description: You can generate unique data by using your own unique `x-api-key` header.
+  - name: App
+    description: You can generate unique data by using your own unique `x-api-key` header and with `resourceName` as path parameter.
 paths:
   /:
     get:
