@@ -2,15 +2,18 @@
 
 import { ApiClient } from "@/lib/api";
 import { useEffect, useState } from "react"
+import { useTodoStore } from "./state";
 
 export function TodoList() {
     const apiClient = new ApiClient({ resourceName: "todo" });
 
-    const [list, setList] = useState<any>([])
+    const {todos, setTodos} = useTodoStore();
 
     useEffect(() => {
         apiClient.getRecords().then(res => {
-            setList(res);
+            console.log(res.data.records);
+
+            setTodos(res.data.records);
         })
     }, [])
 
@@ -18,11 +21,11 @@ export function TodoList() {
     return <>
         <h1 className="mb-5">Todo List</h1>
 
-        <div className="space-y-3">
+        <div className="space-y-3" key={"list"}>
             {
-                list?.data?.records?.map((item: any) => {
+                todos?.map((item: any) => {
                     return <>
-                        <div className="fled justify-between border rounded-lg p-5 w-full">
+                        <div key={item?.id} className="fled justify-between border rounded-lg p-5 w-full">
                             <h2 className="text-lg font-semibol">{item?.data?.title}</h2>
                             <p className="text-sm">
                                 {item?.data?.description}
