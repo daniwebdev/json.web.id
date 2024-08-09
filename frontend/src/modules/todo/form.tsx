@@ -1,30 +1,36 @@
-'use client'
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ApiClient } from "@/lib/api";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { useTodoStore } from "./state";
-
 
 export function TodoForm() {
   const apiClient = new ApiClient({ resourceName: "todo" });
 
-  const {todos, setTodos} = useTodoStore();
+  const { todos, setTodos } = useTodoStore();
 
   function submitTodo(formData: FormData) {
-    var object:any = {};
-    formData.forEach((value, key) => object[key] = value);
+    var object: any = {};
+    formData.forEach((value, key) => (object[key] = value));
 
-    apiClient.createRecord(object).then(res => {
-        alert('success');
+    apiClient.createRecord(object).then((res) => {
+      const all = todos;
 
-        const all = todos;
-
+      if (all != null) {
         all.push(res.data);
 
         setTodos(all);
+        alert("success");
+      }
     });
   }
 
@@ -51,11 +57,10 @@ export function TodoForm() {
               <SelectItem value="done">Done</SelectItem>
             </SelectContent>
           </Select>
-
         </div>
 
         <div>
-            <Button>Submit</Button>
+          <Button>Submit</Button>
         </div>
       </form>
     </>

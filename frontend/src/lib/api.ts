@@ -10,10 +10,12 @@ export class ApiClient {
             this.apiKey = apiKey;
         }
 
+        const date = new Date();
+
         this.http = axios.create({
             baseURL: resourceName ? `https://api.json.web.id/app/${resourceName}`: `https://api.json.web.id`,
             headers: {
-                "x-api-key": this.apiKey
+                "x-api-key": btoa(this.apiKey + date.getFullYear() + date.getMonth() + date.getDate()),
             }
         })
     }
