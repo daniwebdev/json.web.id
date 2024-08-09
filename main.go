@@ -22,12 +22,13 @@ func main() {
 	server := fiber.New()
 
 	// Use CORS middleware with default configuration
-	server.Use(cors.New(cors.Config{
-		AllowOrigins: "*", // Allow all origins
-		AllowMethods: "GET,POST,PUT,DELETE,OPTIONS", // Allow GET, POST, and OPTIONS methods
-        AllowHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Api-Key, DNT, X-CustomHeader, Keep-Alive, User-Agent, If-Modified-Since, Cache-Control, Content-Type", // Allow specific headers
-        // AllowCredentials: true,
-	}))
+	server.Use(cors.New())
+	// server.Use(cors.New(cors.Config{
+	// 	AllowOrigins: "*", // Allow all origins
+	// 	AllowMethods: "GET,POST,PUT,DELETE,OPTIONS", // Allow GET, POST, and OPTIONS methods
+    //     AllowHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Api-Key, DNT, X-CustomHeader, Keep-Alive, User-Agent, If-Modified-Since, Cache-Control, Content-Type", // Allow specific headers
+    //     // AllowCredentials: true,
+	// }))
 	
 
 	app.RouteInit(server)
