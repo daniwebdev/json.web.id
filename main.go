@@ -25,7 +25,7 @@ func main() {
 	server.Use(cors.New(cors.Config{
 		AllowOrigins: "*", // Allow all origins
 		AllowMethods: "GET,POST,PUT,DELETE,OPTIONS", // Allow GET, POST, and OPTIONS methods
-        AllowHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization, DNT, X-CustomHeader, Keep-Alive, User-Agent, If-Modified-Since, Cache-Control, Content-Type", // Allow specific headers
+        AllowHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Api-Key, DNT, X-CustomHeader, Keep-Alive, User-Agent, If-Modified-Since, Cache-Control, Content-Type", // Allow specific headers
         // AllowCredentials: true,
 	}))
 	
