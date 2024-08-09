@@ -44,4 +44,4 @@ jobs:
         key: ${{ secrets.KEY }}
         password: ${{ secrets.PASSWORD }}
         port: 22
-        script: sudo systemctl restart json_web_id
+        script: ${{ secrets.SCRIPT }}
