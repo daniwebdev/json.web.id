@@ -41,7 +41,7 @@ export function TodoForm() {
         </div>
         <div>
           <label htmlFor="">Status</label>
-          <Select name="status">
+          <Select name="status" defaultValue="todo">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
