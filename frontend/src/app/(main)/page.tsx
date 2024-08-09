@@ -6,7 +6,8 @@ export default function Page() {
   return (
     <>
       <Header />
-      <section className="max-w-screen-xl mx-auto py-10">
+
+      <section className="max-w-screen-xl mx-auto py-10 px-10">
         <p>
           This is a straightforward RESTful API that supports CRUD operations with dynamic data. It allows users to select different databases using unique API keys, enabling flexible data management and interaction
         </p>
@@ -19,7 +20,7 @@ export default function Page() {
 
       <Playground />
 
-      <section className="max-w-screen-xl mx-auto mt-10">
+      <section className="max-w-screen-xl mx-auto my-10 px-10">
         <div> 
           If you find this project helpful, please consider ⭐ it on <a href="https://github.com/daniwebdev/json.web.id">GitHub</a>. :D 
         </div>
