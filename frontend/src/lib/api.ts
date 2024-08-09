@@ -1,14 +1,17 @@
 import axios, { AxiosInstance } from "axios";
 
-class ApiClient {
+export class ApiClient {
     apiKey = "demo-json-123-123";
     private http: AxiosInstance;
 
-    constructor(apiKey: string, resourceName?: string) {
-        this.apiKey = apiKey;
+    constructor({apiKey, resourceName}:{apiKey?: string, resourceName?: string}) {
+        
+        if(apiKey) {
+            this.apiKey = apiKey;
+        }
 
         this.http = axios.create({
-            baseURL: resourceName ? `https://json.web.id/api/${resourceName}`: `https://json.web.id/api`,
+            baseURL: resourceName ? `https://api.json.web.id/app/${resourceName}`: `https://api.json.web.id`,
             headers: {
                 "x-api-key": this.apiKey
             }
@@ -17,7 +20,7 @@ class ApiClient {
 
 
     public async getRecords() {
-        const response = await this.http.get("/app");
+        const response = await this.http.get("/");
         return response.data;
     }
 
