@@ -26,15 +26,15 @@ export function TodoList() {
 
 
     return <>
-        <h1 className="mb-5">Todo List</h1>
+        <h1 className="mb-5 text-2xl font-bold">Todo List</h1>
 
         <div className="space-y-3" key={"list"}>
             {
-                todos?.map((item: any) => {
+                todos?.map((item: any, index) => {
                     return <>
-                        <div key={item?.id} className="flex items-center justify-between border rounded-lg p-5 w-full">
+                        <div key={index} className="flex items-center justify-between border rounded-lg p-5 w-full">
                             <div>
-                                <h2 className="text-lg font-semibol">{item?.data?.title}</h2>
+                                <h2 className="text-xl font-semibold">{item?.data?.title}</h2>
                                 <p className="text-sm">
                                     {item?.data?.description}
                                 </p>

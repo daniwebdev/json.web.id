@@ -24,9 +24,12 @@ export default function Page() {
       <section className="max-w-screen-xl mx-auto py-10 px-10">
         <h2 className="text-2xl font-semibold mb-3">Demo</h2>
 
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-4 gap-5">
           <Link href={"/todo"} className="border p-3 rounded-lg hover:bg-slate-100/10">
             <h3 className="text-xl font-semibold">Todo List</h3>
+          </Link>
+          <Link href={"/contact-form"} className="border p-3 rounded-lg hover:bg-slate-100/10">
+            <h3 className="text-xl font-semibold">Contact Form</h3>
           </Link>
         </div>
       </section>

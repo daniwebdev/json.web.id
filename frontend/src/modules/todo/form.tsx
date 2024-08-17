@@ -60,7 +60,7 @@ export function TodoForm() {
         </div>
 
         <div>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </>
