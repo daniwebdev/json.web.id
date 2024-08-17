@@ -1,11 +1,11 @@
-# GoFiber API with SQLite
+# Simple Mock API with SQLite
 
 A simple yet powerful RESTful API built with GoFiber and SQLite, supporting CRUD operations and dynamic database selection.
 
 ## Features
 
 - CRUD operations (Create, Read, Update, Delete)
-- Dynamic database selection based on API key
+- Dynamic database selection based on API key / Resource Name
 - Pagination and search functionality
 
 ## API Endpoints
